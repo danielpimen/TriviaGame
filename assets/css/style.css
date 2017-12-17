@@ -1,0 +1,17 @@
+ .text-center{
+
+ 	background-color: #F5F5DC;
+ }
+ .col-md-8{
+ 	background-color: 	#FF7F50;
+ 	padding-top: 3rem;
+ 	height:75rem;
+ }
+
+ .container-fluid{
+ 	background-image: url('https://lizardpoint.com/geography/images/maps/world.gif');
+ 	height:100rem;
+ }
+ #image-div{
+ 	height:30rem;
+ }
