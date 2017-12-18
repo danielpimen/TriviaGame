@@ -25,21 +25,109 @@
                     <div class='col-md-10 col-md-offset-1 text-center'>
                         <h2 class='bodyHeader'> Welcome to Daniel's Trivia Game</h2>
                         <br>
-                        <h4 class='instructionText'>Guess the right answer before the time runs out!</h4>
+                        <h4 class='instructionText'>Guess the right answers before the time runs out!</h4>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='col-md-10 col-md-offset-1 text-center'>
-                        <h3 id='timer'></h3>
+                        <h3 id='timer'>--:--</h3>
                     </div>
                 </div>
                 <div class='row'>
                     <div class='col-md-10 col-md-offset-1 text-center questionBody'>
-                        <div id='question-div'></div>
+                        <div class='col-md-6 text-center'>
+                            <p class="question">1. What is the capital city of Denmark?</p>
+                            <ul>
+                                <input class="answer" type="radio" name="q1" value="1">
+                                <label id="correctString1">Copenhagen</label>
+                                <br>
+                                <input class="answer" type="radio" name="q1" value="0">
+                                <label>Berlin</label>
+                                <br>
+                                <input class="answer" type="radio" name="q1" value="0">
+                                <label>Moscow</label>
+                                <br>
+                                <input class="answer" type="radio" name="q1" value="0">
+                                <label>Helsinki</label>
+                            </ul>
+                        </div>
+                        </td>
+                        <td>
+                            <div class='col-md-6 text-center'>
+                                <p class="question">2. What country has a capital city named Lisbon?</p>
+                                <ul>
+                                    <input class="answer" type="radio" name="q2" value="0">
+                                    <label>Vietnam</label>
+                                    <br>
+                                    <input class="answer" type="radio" name="q2" value="1">
+                                    <label id="correctString2">Portugal</label>
+                                    <br>
+                                    <input class="answer" type="radio" name="q2" value="0">
+                                    <label>Spain</label>
+                                    <br>
+                                    <input class="answer" type="radio" name="q2" value="0">
+                                    <label>Algeria</label>
+                                </ul>
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class='col-md-6 text-center'>
+                                    <p class="question">3. Which one of the following nations used to be part of Yugoslavia?</p>
+                                    <ul>
+                                        <input class="answer" type="radio" name="q3" value="0">
+                                        <label>Greece</label>
+                                        <br>
+                                        <input class="answer" type="radio" name="q3" value="1">
+                                        <label id="correctString3">Croatia</label>
+                                        <br>
+                                        <input class="answer" type="radio" name="q3" value="0">
+                                        <label>Estonia</label>
+                                        <br>
+                                        <input class="answer" type="radio" name="q3" value="0">
+                                        <label>Hungary</label>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                <div class='col-md-6 text-center'>
+                                    <p class="question">4. Which country has a capital city named Lima?</p>
+                                    <ul>
+                                        <input class="answer" type="radio" name="q4" value="0">
+                                        <label>Colombia</label>
+                                        <br>
+                                        <input class="answer" type="radio" name="q4" value="1">
+                                        <label id="correctString4">Peru</label>
+                                        <br>
+                                        <input class="answer" type="radio" name="q4" value="0">
+                                        <label>Nigeria</label>
+                                        <br>
+                                        <input class="answer" type="radio" name="q4" value="0">
+                                        <label>Mexico</label>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        </table>
+                        <br/>
+                        <div class="submitter col-md-12 text-center">
+                            <input class="quizSubmit" id="submitButton" onClick="submitQuiz()" type="submit" value="Submit" />
+                        </div>
+                        <!--show only wrong answers on submit-->
+                        <div class="quizAnswers" id="correctAnswer1"></div>
+                        <div class="quizAnswers" id="correctAnswer2"></div>
+                        <div class="quizAnswers" id="correctAnswer3"></div>
+                        <div class="quizAnswers" id="correctAnswer4"></div>
+                        <!--show score upon submit-->
+                        <div>
+                            <h2 class="quizScore" id="userScore"></h2>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 
