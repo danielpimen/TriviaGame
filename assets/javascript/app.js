@@ -11,7 +11,7 @@
 
 */
 $(document).ready(function() {
-	var myQuestions[
+	var myQuestions =[
 	{question: 'What is the capital of Denmark?',
 
 	answers: {
@@ -35,56 +35,40 @@ $(document).ready(function() {
 	answers: {
 		a: 'Portugal',
 		b: 'Poland',
-		c: 'Nigeria',
+		c: 'Berlin',
 	}
 
 	correctAnswer: 'c'},
 
 	]
-    var correct = 0;
-    var wrong = 0;
-    var questionArray = ['']
-    var player = confirm('Are you ready to play?');
-    if (true) {
-        runQuestion();
-        insertQuestion();
-    } else {
-        alert('You suck');
-    }
 
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
 
+function quizBody{
+	var output= [];
 
-    function runQuestion() {
-        //Timer
-        var number = 30;
-        var intervalId;
+	myQuestions.each(
+		currentQuestion. questionNumber) => {
+		var answers= [];
+		for (letter in currentQuestion.answers){
+			answers.push(
+				'<label> <input type="radio" name="question${questionNumber}" value="${letter}"> ${letter} : ${currentQuestion.answers[letter]} </label>');
 
-        function runTimer() {
-            intervalId = setInterval(decrement, 1000);
+		}
+		output.push(
+			'<div class="question"> ${currentQuestion.question}</div> <div class="answers"> ${answers.join("")} </div>' );
+	}
+}
+function showQuestion(){
+	var answerContainers=quizContainer.querySelectorAll('.answers');
+	var numCorrect=0;
+	myQuestions.each((currentQuestion, questionNumber) => {
+	var answerContainer=answerContainers[questionNumber];
+	var selector= 'input[name=question + questionNumber +']: checked;
+	var userAnswer=(answerContainer.querySelector(selector) || {}.value;)
+	})
 
-        }
-
-        function decrement() {
-            number--;
-            $("#timer").html("<h2>" + number + "</h2>");
-            if (number === 0) {
-                stop();
-            }
-        }
-
-        function stop() {
-            clearInterval(intervalId);
-        }
-        runTimer();
-
-
-    }
-
-
-    function insertQuestion() {
-        console.log('hello');
-        $("#question-div").html('<h4>What is the capital of Denmark?</h4><p>A) Denmark City</p><p>B) Copenhagen</p> <p> C)Berlin</p>');
-
-    }
-    insertQuestion();
+}
 })
