@@ -10,65 +10,51 @@
 9)call function to restart game on click of button
 
 */
+
+function runQuiz() {
+        //Timer
+        var number = 30;
+        var intervalId;
+        console.log('hello');
+        runTimer();
+          
+
+        function runTimer() {
+            intervalId = setInterval(decrement, 1000);
+           
+
+        }
+
+        function decrement() {
+            number--;
+            $("#timer").html("<h2>" + number + "</h2>");
+            if (number === 0) {
+                stop();
+            }
+           
+        }
+        function stop() {
+            clearInterval(intervalId);
+        }
+    }
+
 $(document).ready(function() {
-	var myQuestions =[
-	{question: 'What is the capital of Denmark?',
+	var player = confirm('Are you ready to play?');
+    if (true) {
+        runQuiz();
+    } else {
+        alert('You suck');}
 
-	answers: {
-		a: 'Denmark City',
-		b: 'Copenhagen',
-		c: 'Berlin',
-	}
-
-	correctAnswer: 'b'},
-	{question: 'Where is the city of Lima located?',
-
-	answers: {
-		a: 'Colombia',
-		b: 'Mexico',
-		c: 'Peru',
-	}
-
-	correctAnswer: 'c'},
-	{question: 'Which country has a capital city named Lisbon?',
-
-	answers: {
-		a: 'Portugal',
-		b: 'Poland',
-		c: 'Berlin',
-	}
-
-	correctAnswer: 'c'},
-
-	]
-
-var quizContainer = document.getElementById('quiz');
-var resultsContainer = document.getElementById('results');
-var submitButton = document.getElementById('submit');
-
-function quizBody{
-	var output= [];
-
-	myQuestions.each(
-		currentQuestion. questionNumber) => {
-		var answers= [];
-		for (letter in currentQuestion.answers){
-			answers.push(
-				'<label> <input type="radio" name="question${questionNumber}" value="${letter}"> ${letter} : ${currentQuestion.answers[letter]} </label>');
-
-		}
-		output.push(
-			'<div class="question"> ${currentQuestion.question}</div> <div class="answers"> ${answers.join("")} </div>' );
-	}
-}
-function showQuestion(){
-	var answerContainers=quizContainer.querySelectorAll('.answers');
-	var numCorrect=0;
-	myQuestions.each((currentQuestion, questionNumber) => {
-	var answerContainer=answerContainers[questionNumber];
-	var selector= 'input[name=question + questionNumber +']: checked;
-	var userAnswer=(answerContainer.querySelector(selector) || {}.value;)
-	})
-
-}
 })
+
+//document on click for submit button to submit quiz
+    
+function submitQuiz(){
+	function answerScore(x){
+		var radioNo = document.getElementsByName(qName);
+		console.log('hello')
+	}
+}
+    
+  
+    

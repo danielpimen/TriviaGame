@@ -12,6 +12,9 @@
  	background-image: url('https://lizardpoint.com/geography/images/maps/world.gif');
  	height:100rem;
  }
- #image-div{
+ #question-div{
  	height:30rem;
+ }
+ .submitter{
+ 	padding-bottom: 5rem;
  }
