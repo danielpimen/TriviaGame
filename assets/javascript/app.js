@@ -61,7 +61,8 @@ $(document).ready(function() {
 
 
 function submitQuiz() {
-    console.log('hello');
+    rightAnswers = 0;
+
 
     $('#answersTitle').html('<h4>The correct answers are:</h4>');
     $('#correctAnswer1').html('<h4>1) Copenhagen</h4>');
@@ -75,27 +76,110 @@ function submitQuiz() {
     $('#userAnswer3').html('<h4>3) </h4>');
     $('#userAnswer4').html('<h4>4) </h4>');
 
+    var radiosNo;
+    var answerValue;
+    var answerValue2;
+    var answerValue3;
+    var answerValue4;
+    calcScore = 0;
 
-    function answerLog(qName) {
-        console.log('hi')
-        var radiosNo = jQuery('[name="qName"]');
+    function answerLog1() {
+        var radiosNo = document.getElementsByName('q1');
 
-        for(var i=0, length=radiosNo.length; i< length; i++){
-        	if (radiosNo[i].checked){
-        		var answerValue= Number(radiosNo[i].value);
-        	}
+
+        for (var i = 0, length = radiosNo.length; i < length; i++) {
+            if (radiosNo[i].checked) {
+                var answerValue = Number(radiosNo[i].value);
+                console.log(answerValue);
+                calcScore++;
+                console.log(calcScore);
+
+            }
         }
-        if (isNaN(answerValue)){
-        	answerValue=0;
+        if (isNaN(answerValue)) {
+            answerValue = 0;
         }
-        return answerValue;
-        console.log('poop');
+        // return answerValue;
+
     }
-    answerLog();
+    answerLog1();
 
-    var calcScore = (answerLog('q1') + answerLog('q2') + answerLog('q3') + answerLog('q4'));
-	console.log(calcScore);
+    function answerLog2() {
+        var radiosNo = document.getElementsByName('q2');
 
 
+        for (var i = 0, length = radiosNo.length; i < length; i++) {
+            if (radiosNo[i].checked) {
+                var answerValue2 = Number(radiosNo[i].value);
+                console.log(answerValue2);
+                rightAnswers++;
+            }
+        }
+        if (isNaN(answerValue2)) {
+            answerValue2 = 0;
+        }
+        return answerValue2;
+
+    }
+    answerLog2();
+
+    function answerLog3() {
+        var radiosNo = document.getElementsByName('q3');
+
+
+        for (var i = 0, length = radiosNo.length; i < length; i++) {
+            if (radiosNo[i].checked) {
+                var answerValue3 = Number(radiosNo[i].value);
+                console.log(answerValue3);
+                rightAnswers++;
+            }
+        }
+        if (isNaN(answerValue3)) {
+            answerValue3 = 0;
+        }
+        return answerValue3;
+
+    }
+    answerLog3();
+
+    function answerLog4() {
+        var radiosNo = document.getElementsByName('q4');
+
+
+        for (var i = 0, length = radiosNo.length; i < length; i++) {
+            if (radiosNo[i].checked) {
+                var answerValue4 = Number(radiosNo[i].value);
+                console.log(answerValue4);
+                rightAnswers++;
+            }
+        }
+        if (isNaN(answerValue4)) {
+            answerValue4 = 0;
+        }
+        return answerValue4;
+        console.log(answerValue4);
+
+    }
+
+    answerLog4();
+
+    function outputScore() {
+        console.log(answerValue, answerValue4, answerValue3, answerValue2);
+        var numberCorrect = answerValue + answerValue2 + answerValue3 + answerValue4;
+        $('#userScore').html('You got ' + numberCorrect + '/4 questions right!');
+        console.log(numberCorrect);
+
+    }
+    $('#userScore').html('You got ' + calcScore + '/4 questions right!');
+    // var calcScore = (answerLog('q1') + answerLog('q2') + answerLog('q3') + answerLog('q4'));
+    $('#userAnswer1').html('You guessed: ');
+     $('#userAnswer2').html('You guessed: ');
+    
+     $('#userAnswer3').html('You guessed: ');
+    
+     $('#userAnswer4').html('You guessed: ');
+    
+    
+
+    outputScore();
 }
-
