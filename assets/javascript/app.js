@@ -1,185 +1,218 @@
-/*Steps
-1) Create loop with timer that will display pages
-2)on click, display question and answers
-3)allow user to click question
-4)if right, print congrats, load next question
-5) if wrong, tell right answer, next question
-6) store response after each page
-7)repeat 10 times
-8)print end game screen with correct/wrong answers
-9)call function to restart game on click of button
+$(document).ready(function(){
+	var time=20;
+	var count=0;
+	var isClicked=false;
+	var timer;
+	var correct=0;
+	var incorrect=0;
+	var unanswered=0;
 
-*/
+	//Questions & Answers//
+	var questions=['What is the capital city of Chile?', 'What is the capital city of Peru',
+	'Which of the following countries used to be part of Yugoslavia?', 'Copenhagen is the capital city of what country?'];
+	var answer=['Santiago', 'Lima', 'Croatia', 'Denmark'];
+	var firstChoice=['Santiago', 'Cuzco', 'Denmark', 'Norway'];
+	var secondChoice=['Lima', 'Bogota', 'Greece', 'Sweden'];
+	var thirdChoice=['Paris', 'London', 'Croatia', 'Denmark'];
+	var fourthChoice=['Madrid', 'Lima', 'Hungary', 'Russia'];
 
-function runQuiz() {
-    //Timer
-    var number = 30;
-    var intervalId;
-    console.log('hello');
-    runTimer();
+	function showDiv() {
+        $("#question-holder").show();
+        $("#choice-holder-1").show();
+        $("#choice-holder-2").show();
+        $("#choice-holder-3").show();
+        $("#choice-holder-4").show();
+	}
+	function hideDiv(){
+		$("#question-holder").hide();
+        $("#choice-holder-1").hide();
+        $("#choice-holder-2").hide();
+        $("#choice-holder-3").hide();
+        $("#choice-holder-4").hide();
 
+	}
 
-    function runTimer() {
-        intervalId = setInterval(decrement, 1000);
+	function hideResults(){
+		$("#correct-holder").hide();
+        $("#incorrect-holder").hide();
+        $("#unanswered-holder").hide();
+        $("#restart-holder").hide();
 
-
+	}
+	function displayQuestion () {
+        hideResults();
+        $("#answer-holder").hide();
+        $("#image-holder").hide();
+        $("#time-holder").show();
+        showDiv();
+        $("#question-holder").html(questions[count]);
+        $("#choice-holder-1").html(firstChoice[count]);
+        $("#choice-holder-2").html(secondChoice[count]);
+        $("#choice-holder-3").html(thirdChoice[count]);
+        $("#choice-holder-4").html(fourthChoice[count]);
     }
+         $("#choice-holder-1").hover(function() {
+            $(this).css("color", "red");
+        },
+        function(){
+            $(this).css("color", "black");
+        });
+        $("#choice-holder-2").hover(function() {
+            $(this).css("color", "red");
+        },
+        function(){
+            $(this).css("color", "black");
+        });
+        $("#choice-holder-3").hover(function() {
+            $(this).css("color", "red");
+        },
+        function(){
+            $(this).css("color", "black");
+        });
+        $("#choice-holder-4").hover(function() {
+            $(this).css("color", "red");
+        },
+        function(){
+            $(this).css("color", "black");
+        });
 
-    function decrement() {
-        number--;
-        $("#timer").html("<h2>" + number + "</h2>");
-        if (number === 0) {
-            alert('Loser!');
-            stop();
+    $("#choice-holder-1").on("click", checkAnswer) 
+    $("#choice-holder-2").on("click", checkAnswer)
+    $("#choice-holder-3").on("click", checkAnswer)
+    $("#choice-holder-4").on("click", checkAnswer)
+
+
+    function checkAnswer() {
+
+        hideDiv();
+
+        if($(this).text() === answer[count]) {
+            stopTime();
+            isClicked = true;
+            $("#answer-holder").show();
+            $("#answer-holder").html("Right! The answer is: " + answer[count]);
+            displayImage();
+            correct++;
+            count++;
         }
+        else {
+            stopTime();
+            isClicked = true;
+            $("#answer-holder").show();
+            $("#answer-holder").html("Wrong! The answer is: " + answer[count]);
+            displayImage();
+            incorrect++;
+            count++;
+        } 
 
+        checkGameEnd();  
+    }
+    function checkGameEnd() {
+        if(count === questions.length) {
+            $("#time-holder").hide();
+            showResults();
+            count = 0;
+            $(".start").show();
+            $(".start").on("click", function() {
+                resetResults();
+                startGame();
+            });
+        }
+    }
+    function resetTime() {
+        time = 15;
     }
 
-    function stop() {
-        clearInterval(intervalId);
+    function displayTime() {
+        time--;
+        $("#time-holder").html("Time remaining: " + time);
+      
+            if(time <= 0) {
+                hideDiv();
+                stopTime();
+                $("#answer-holder").show();
+                $("#answer-holder").html("Time is up! The answer is: " + answer[count]);
+                displayImage();
+                unanswered++;
+                count++;
+                checkGameEnd();
+            }
     }
-}
 
-$(document).ready(function() {
-    confirm('Are you ready to play?');
-    if (true) {
-        runQuiz();
-    } else {
-        alert('You suck');
+    function startTime() {
+        clearInterval(timer);
+        timer = setInterval(displayTime, 1000);
+    }
+    function stopTime() {
+        clearInterval(timer);
+        resetTime();
+        if(count < questions.length - 1) {
+            setTimeout(startTime, 2000);
+            setTimeout(displayQuestion, 3000);
+        }
+    }
+
+    resetTime();
+     function displayImage() {
+        if(count === 0) {
+            $("#image-holder").show();
+            $("#image-holder").html('<img src="assets/images/tom_marvolo_riddle.jpg">');
+        }
+        else if(count === 1) {
+            $("#image-holder").show();
+            $("#image-holder").html('<img src="assets/images/armando_dippet.jpg">');
+        }
+        else if(count === 2) {
+            $("#image-holder").show();
+            $("#image-holder").html('<img src="assets/images/helena_ravenclaw.png">');
+        }
+        else if(count === 3) {
+            $("#image-holder").show();
+            $("#image-holder").html('<img src="assets/images/merope_gaunt.png">');
+        }
+        else if(count === 4) {
+            $("#image-holder").show();
+            $("#image-holder").html('<img src="assets/images/snitch.jpg">');
+        }
+        else if(count === 5) {
+            $("#image-holder").show();
+            $("#image-holder").html('<img src="assets/images/phoenix.jpg">');
+        }
+        else if(count === 6) {
+            $("#image-holder").show();
+            $("#image-holder").html('<img src="assets/images/lion.jpg">');
+        }
+        else if(count === 7) {
+            $("#image-holder").show();
+            $("#image-holder").html('<img src="assets/images/neville_longbottom.jpg">');
+        }
+    }
+      function showResults() {
+        $("#correct-holder").show();
+        $("#correct-holder").html("Correct: " + correct);
+        $("#incorrect-holder").show();
+        $("#incorrect-holder").html("Incorrect: " + incorrect);
+        $("#unanswered-holder").show();
+        $("#unanswered-holder").html("Unanswered: " + unanswered);
+        $("#restart-holder").show();
+        $("#restart-holder").html("Click Start above to play again!");
+    }
+      function resetResults() {
+        correct = 0;
+        incorrect = 0;
+        unanswered = 0;
     }
 
 
-    $('#submitButton').click(function() {
-        submitQuiz();
+    function startGame() {
+        $(".start").hide();
+        startTime();
+        displayQuestion();
+    }
 
+
+  $(".start").on("click", function() {
+    startGame();
+  });
 
     })
-
-})
-
-//document on click for submit button to submit quiz
-
-
-function submitQuiz() {
-    rightAnswers = 0;
-
-
-    $('#answersTitle').html('<h4>The correct answers are:</h4>');
-    $('#correctAnswer1').html('<h4>1) Copenhagen</h4>');
-    $('#correctAnswer2').html('<h4>2) Portugal</h4>');
-    $('#correctAnswer3').html('<h4>3) Croatia</h4>');
-    $('#correctAnswer4').html('<h4>4) Peru</h4>');
-
-    $('#userTitle').html('<h4>Your answers were:</h4>');
-    $('#userAnswer1').html('<h4>1) </h4>');
-    $('#userAnswer2').html('<h4>2) </h4>');
-    $('#userAnswer3').html('<h4>3) </h4>');
-    $('#userAnswer4').html('<h4>4) </h4>');
-
-    var radiosNo;
-    var answerValue;
-    var answerValue2;
-    var answerValue3;
-    var answerValue4;
-    calcScore = 0;
-
-    function answerLog1() {
-        var radiosNo = document.getElementsByName('q1');
-
-
-        for (var i = 0, length = radiosNo.length; i < length; i++) {
-            if (radiosNo[i].checked) {
-                var answerValue = Number(radiosNo[i].value);
-                console.log(answerValue);
-                calcScore++;
-                console.log(calcScore);
-
-            }
-        }
-        if (isNaN(answerValue)) {
-            answerValue = 0;
-        }
-        // return answerValue;
-
-    }
-    answerLog1();
-
-    function answerLog2() {
-        var radiosNo = document.getElementsByName('q2');
-
-
-        for (var i = 0, length = radiosNo.length; i < length; i++) {
-            if (radiosNo[i].checked) {
-                var answerValue2 = Number(radiosNo[i].value);
-                console.log(answerValue2);
-                rightAnswers++;
-            }
-        }
-        if (isNaN(answerValue2)) {
-            answerValue2 = 0;
-        }
-        return answerValue2;
-
-    }
-    answerLog2();
-
-    function answerLog3() {
-        var radiosNo = document.getElementsByName('q3');
-
-
-        for (var i = 0, length = radiosNo.length; i < length; i++) {
-            if (radiosNo[i].checked) {
-                var answerValue3 = Number(radiosNo[i].value);
-                console.log(answerValue3);
-                rightAnswers++;
-            }
-        }
-        if (isNaN(answerValue3)) {
-            answerValue3 = 0;
-        }
-        return answerValue3;
-
-    }
-    answerLog3();
-
-    function answerLog4() {
-        var radiosNo = document.getElementsByName('q4');
-
-
-        for (var i = 0, length = radiosNo.length; i < length; i++) {
-            if (radiosNo[i].checked) {
-                var answerValue4 = Number(radiosNo[i].value);
-                console.log(answerValue4);
-                rightAnswers++;
-            }
-        }
-        if (isNaN(answerValue4)) {
-            answerValue4 = 0;
-        }
-        return answerValue4;
-        console.log(answerValue4);
-
-    }
-
-    answerLog4();
-
-    function outputScore() {
-        console.log(answerValue, answerValue4, answerValue3, answerValue2);
-        var numberCorrect = answerValue + answerValue2 + answerValue3 + answerValue4;
-        $('#userScore').html('You got ' + numberCorrect + '/4 questions right!');
-        console.log(numberCorrect);
-
-    }
-    $('#userScore').html('You got ' + calcScore + '/4 questions right!');
-    // var calcScore = (answerLog('q1') + answerLog('q2') + answerLog('q3') + answerLog('q4'));
-    $('#userAnswer1').html('You guessed: ');
-     $('#userAnswer2').html('You guessed: ');
-    
-     $('#userAnswer3').html('You guessed: ');
-    
-     $('#userAnswer4').html('You guessed: ');
-    
-    
-
-    outputScore();
-}

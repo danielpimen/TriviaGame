@@ -1,21 +1,3 @@
- .text-center{
-
- 	background-color: #F5F5DC;
- }
- .col-md-8{
- 	background-color: 	#FF7F50;
- 	padding-top: 3rem;
- 	height:100%;
- 	padding-bottom: 3rem;
- }
-
- .container-fluid{
- 	background-image: url('https://lizardpoint.com/geography/images/maps/world.gif');
- 	height:100rem;
- }
- #question-div{
- 	height:30rem;
- }
- .submitter{
- 	padding-bottom: 5rem;
- }
+.jumbotron{
+	background-color:red;
+}
