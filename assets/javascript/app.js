@@ -1,45 +1,48 @@
-$(document).ready(function(){
-	var time=20;
-	var count=0;
-	var isClicked=false;
-	var timer;
-	var correct=0;
-	var incorrect=0;
-	var unanswered=0;
+$(document).ready(function() {
+    var time = 20;
+    var count = 0;
+    var isClicked = false;
+    var timer;
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
 
-	//Questions & Answers//
-	var questions=['What is the capital city of Chile?', 'What is the capital city of Peru',
-	'Which of the following countries used to be part of Yugoslavia?', 'Copenhagen is the capital city of what country?'];
-	var answer=['Santiago', 'Lima', 'Croatia', 'Denmark'];
-	var firstChoice=['Santiago', 'Cuzco', 'Denmark', 'Norway'];
-	var secondChoice=['Lima', 'Bogota', 'Greece', 'Sweden'];
-	var thirdChoice=['Paris', 'London', 'Croatia', 'Denmark'];
-	var fourthChoice=['Madrid', 'Lima', 'Hungary', 'Russia'];
+    //Questions & Answers//
+    var questions = ['What is the capital city of Chile?', 'What is the capital city of Peru',
+        'Which of the following countries used to be part of Yugoslavia?', 'Copenhagen is the capital city of what country?'
+    ];
+    var answer = ['Santiago', 'Lima', 'Croatia', 'Denmark'];
+    var firstChoice = ['Santiago', 'Cuzco', 'Denmark', 'Norway'];
+    var secondChoice = ['Lima', 'Bogota', 'Greece', 'Sweden'];
+    var thirdChoice = ['Paris', 'London', 'Croatia', 'Denmark'];
+    var fourthChoice = ['Madrid', 'Lima', 'Hungary', 'Russia'];
 
-	function showDiv() {
+    function showDiv() {
         $("#question-holder").show();
         $("#choice-holder-1").show();
         $("#choice-holder-2").show();
         $("#choice-holder-3").show();
         $("#choice-holder-4").show();
-	}
-	function hideDiv(){
-		$("#question-holder").hide();
+    }
+
+    function hideDiv() {
+        $("#question-holder").hide();
         $("#choice-holder-1").hide();
         $("#choice-holder-2").hide();
         $("#choice-holder-3").hide();
         $("#choice-holder-4").hide();
 
-	}
+    }
 
-	function hideResults(){
-		$("#correct-holder").hide();
+    function hideResults() {
+        $("#correct-holder").hide();
         $("#incorrect-holder").hide();
         $("#unanswered-holder").hide();
         $("#restart-holder").hide();
 
-	}
-	function displayQuestion () {
+    }
+
+    function displayQuestion() {
         hideResults();
         $("#answer-holder").hide();
         $("#image-holder").hide();
@@ -51,32 +54,32 @@ $(document).ready(function(){
         $("#choice-holder-3").html(thirdChoice[count]);
         $("#choice-holder-4").html(fourthChoice[count]);
     }
-         $("#choice-holder-1").hover(function() {
+    $("#choice-holder-1").hover(function() {
             $(this).css("color", "red");
         },
-        function(){
+        function() {
             $(this).css("color", "black");
         });
-        $("#choice-holder-2").hover(function() {
+    $("#choice-holder-2").hover(function() {
             $(this).css("color", "red");
         },
-        function(){
+        function() {
             $(this).css("color", "black");
         });
-        $("#choice-holder-3").hover(function() {
+    $("#choice-holder-3").hover(function() {
             $(this).css("color", "red");
         },
-        function(){
+        function() {
             $(this).css("color", "black");
         });
-        $("#choice-holder-4").hover(function() {
+    $("#choice-holder-4").hover(function() {
             $(this).css("color", "red");
         },
-        function(){
+        function() {
             $(this).css("color", "black");
         });
 
-    $("#choice-holder-1").on("click", checkAnswer) 
+    $("#choice-holder-1").on("click", checkAnswer)
     $("#choice-holder-2").on("click", checkAnswer)
     $("#choice-holder-3").on("click", checkAnswer)
     $("#choice-holder-4").on("click", checkAnswer)
@@ -86,7 +89,7 @@ $(document).ready(function(){
 
         hideDiv();
 
-        if($(this).text() === answer[count]) {
+        if ($(this).text() === answer[count]) {
             stopTime();
             isClicked = true;
             $("#answer-holder").show();
@@ -94,8 +97,7 @@ $(document).ready(function(){
             displayImage();
             correct++;
             count++;
-        }
-        else {
+        } else {
             stopTime();
             isClicked = true;
             $("#answer-holder").show();
@@ -103,12 +105,13 @@ $(document).ready(function(){
             displayImage();
             incorrect++;
             count++;
-        } 
+        }
 
-        checkGameEnd();  
+        checkGameEnd();
     }
+
     function checkGameEnd() {
-        if(count === questions.length) {
+        if (count === questions.length) {
             $("#time-holder").hide();
             showResults();
             count = 0;
@@ -119,75 +122,72 @@ $(document).ready(function(){
             });
         }
     }
+
     function resetTime() {
-        time = 15;
+        time = 20;
     }
 
     function displayTime() {
         time--;
         $("#time-holder").html("Time remaining: " + time);
-      
-            if(time <= 0) {
-                hideDiv();
-                stopTime();
-                $("#answer-holder").show();
-                $("#answer-holder").html("Time is up! The answer is: " + answer[count]);
-                displayImage();
-                unanswered++;
-                count++;
-                checkGameEnd();
-            }
+
+        if (time <= 0) {
+            hideDiv();
+            stopTime();
+            $("#answer-holder").show();
+            $("#answer-holder").html("Time is up! The answer is: " + answer[count]);
+            displayImage();
+            unanswered++;
+            count++;
+            checkGameEnd();
+        }
     }
 
     function startTime() {
         clearInterval(timer);
         timer = setInterval(displayTime, 1000);
     }
+
     function stopTime() {
         clearInterval(timer);
         resetTime();
-        if(count < questions.length - 1) {
+        if (count < questions.length - 1) {
             setTimeout(startTime, 2000);
             setTimeout(displayQuestion, 3000);
         }
     }
 
     resetTime();
-     function displayImage() {
-        if(count === 0) {
+
+    function displayImage() {
+        if (count === 0) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/tom_marvolo_riddle.jpg">');
-        }
-        else if(count === 1) {
+            $("#image-holder").html('<img src="assets/images/">');
+        } else if (count === 1) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/armando_dippet.jpg">');
-        }
-        else if(count === 2) {
+            $("#image-holder").html('<img src="assets/images/">');
+        } else if (count === 2) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/helena_ravenclaw.png">');
-        }
-        else if(count === 3) {
+            $("#image-holder").html('<img src="assets/images/">');
+        } else if (count === 3) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/merope_gaunt.png">');
-        }
-        else if(count === 4) {
+            $("#image-holder").html('<img src="assets/images/">');
+        } else if (count === 4) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/snitch.jpg">');
-        }
-        else if(count === 5) {
+            $("#image-holder").html('<img src="assets/images/">');
+        } else if (count === 5) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/phoenix.jpg">');
-        }
-        else if(count === 6) {
+            $("#image-holder").html('<img src="assets/images/">');
+        } else if (count === 6) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/lion.jpg">');
-        }
-        else if(count === 7) {
+            $("#image-holder").html('<img src="assets/images/">');
+        } else if (count === 7) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/neville_longbottom.jpg">');
+            $("#image-holder").html('<img src="assets/images/">');
         }
     }
-      function showResults() {
+
+    function showResults() {
         $("#correct-holder").show();
         $("#correct-holder").html("Correct: " + correct);
         $("#incorrect-holder").show();
@@ -197,7 +197,8 @@ $(document).ready(function(){
         $("#restart-holder").show();
         $("#restart-holder").html("Click Start above to play again!");
     }
-      function resetResults() {
+
+    function resetResults() {
         correct = 0;
         incorrect = 0;
         unanswered = 0;
@@ -211,8 +212,8 @@ $(document).ready(function(){
     }
 
 
-  $(".start").on("click", function() {
-    startGame();
-  });
+    $(".start").on("click", function() {
+        startGame();
+    });
 
-    })
+})
