@@ -1,146 +1,92 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Daniel's Trivia Game</title>
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <title>Geography Trivia</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Link to CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Josefin+Sans" rel="stylesheet">
 </head>
 
 <body>
-    <div class='container-fluid' id='wholePage'>
-        <div class='row text-center'>
-            <h1 class='title'>Daniel's Trivia Game</h1>
+    <div class="container">
+        <div class='jumbotron text-center'>
+            <h2 class='titleText'>Daniel's Trivia Game</h2>
         </div>
-        <br class='title break'>
         <div class='row'>
-            <div class='col-md-8 col-md-offset-2'>
-                <div class='row'>
-                    <div class='col-md-10 col-md-offset-1 text-center'>
-                        <h2 class='bodyHeader'> Welcome to Daniel's Trivia Game</h2>
-                        <br>
-                        <h4 class='instructionText'>Guess the right answers before the time runs out!</h4>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-md-10 col-md-offset-1 text-center'>
-                        <h3 id='timer'>--:--</h3>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-md-10 col-md-offset-1 text-center questionBody'>
-                        <div class='col-md-6 text-center'>
-                            <p class="question">1. What is the capital city of Denmark?</p>
-                            <ul>
-                                <input class="answer" type="radio" name="q1" value="1">
-                                <label id="correctString1">Copenhagen</label>
-                                <br>
-                                <input class="answer" type="radio" name="q1" value="0">
-                                <label>Berlin</label>
-                                <br>
-                                <input class="answer" type="radio" name="q1" value="0">
-                                <label>Moscow</label>
-                                <br>
-                                <input class="answer" type="radio" name="q1" value="0">
-                                <label>Helsinki</label>
-                            </ul>
-                        </div>
-                        </td>
-                        <td>
-                            <div class='col-md-6 text-center'>
-                                <p class="question">2. What country has a capital city named Lisbon?</p>
-                                <ul>
-                                    <input class="answer" type="radio" name="q2" value="0">
-                                    <label>Vietnam</label>
-                                    <br>
-                                    <input class="answer" type="radio" name="q2" value="1">
-                                    <label id="correctString2">Portugal</label>
-                                    <br>
-                                    <input class="answer" type="radio" name="q2" value="0">
-                                    <label>Spain</label>
-                                    <br>
-                                    <input class="answer" type="radio" name="q2" value="0">
-                                    <label>Algeria</label>
-                                </ul>
-                            </div>
-                        </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class='col-md-6 text-center'>
-                                    <p class="question">3. Which one of the following nations used to be part of Yugoslavia?</p>
-                                    <ul>
-                                        <input class="answer" type="radio" name="q3" value="0">
-                                        <label>Greece</label>
-                                        <br>
-                                        <input class="answer" type="radio" name="q3" value="1">
-                                        <label id="correctString3">Croatia</label>
-                                        <br>
-                                        <input class="answer" type="radio" name="q3" value="0">
-                                        <label>Estonia</label>
-                                        <br>
-                                        <input class="answer" type="radio" name="q3" value="0">
-                                        <label>Hungary</label>
-                                    </ul>
-                                </div>
-                            </td>
-                            <td>
-                                <div class='col-md-6 text-center'>
-                                    <p class="question">4. Which country has a capital city named Lima?</p>
-                                    <ul>
-                                        <input class="answer" type="radio" name="q4" value="0">
-                                        <label>Colombia</label>
-                                        <br>
-                                        <input class="answer" type="radio" name="q4" value="1">
-                                        <label id="correctString4">Peru</label>
-                                        <br>
-                                        <input class="answer" type="radio" name="q4" value="0">
-                                        <label>Nigeria</label>
-                                        <br>
-                                        <input class="answer" type="radio" name="q4" value="0">
-                                        <label>Mexico</label>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        </table>
-                        <br/>
-                        <div class="submitter col-md-12 text-center">
-                            <input class="quizSubmit" id="submitButton" onClick="submitQuiz()" type="submit" value="Submit" />
-                        </div>
-                        <!--show only wrong answers on submit-->
-                        <div class='row'>
-                            <div class='col-md-6'>
-                                <div class='quizAnswers' id='answersTitle'></div>
-                                <div class="quizAnswers" id="correctAnswer1"></div>
-                                <div class="quizAnswers" id="correctAnswer2"></div>
-                                <div class="quizAnswers" id="correctAnswer3"></div>
-                                <div class="quizAnswers" id="correctAnswer4"></div>
-                            </div>
-                            <div class='col-md-6'>
-                                <div class='userAnswers' id='userTitle'></div>
-                                <div class="userAnswers" id="userAnswer1"></div>
-                                <div class="quizAnswers" id="userAnswer2"></div>
-                                <div class="quizAnswers" id="userAnswer3"></div>
-                                <div class="quizAnswers" id="userAnswer4"></div>
-                            </div>
-                        </div>
-                        <!--show score upon submit-->
-                        <div>
-                            <h2 class="quizScore" id="userScore"></h2>
-                        </div>
-                    </div>
-                </div>
+            <div class='col-md-2 col-md-offset-5'>
+                <button type="button" class="btn start">Start</button>
             </div>
         </div>
     </div>
-    </div>
+    <row>
+        <div class="col-md-12">
+            <h2><div id="time-holder"></div></h2>
+        </div>
+    </row>
+    <row>
+        <div class="col-md-12">
+            <h2><div id="question-holder"></div></h2>
+            <h2><div id="answer-holder"></div></h2>
+        </div>
+    </row>
+    <row>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h2><div id="image-holder"></div></h2>
+        </div>
+        <div class="col-md-4"></div>
+    </row>
+    <row>
+        <div class="col-md-12">
+            <h2><div id="choice-holder-1"></div></h2>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h2><div id="correct-holder"></div></h2>
+        </div>
+        <div class="col-md-4"></div>
+        <row>
+            <div class="col-md-12">
+                <h2><div id="choice-holder-2"></div></h2>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h2><div id="incorrect-holder"></div></h2>
+            </div>
+            <div class="col-md-4"></div>
+        </row>
+        <row>
+            <div class="col-md-12">
+                <h2><div id="choice-holder-3"></div></h2>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h2><div id="unanswered-holder"></div></h2>
+            </div>
+            <div class="col-md-4"></div>
+        </row>
+        <row>
+            <div class="col-md-12">
+                <h2><div id="choice-holder-4"></div></h2>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h2><div id="restart-holder"></div></h2>
+            </div>
+            <div class="col-md-2"></div>
+        </row>
+        <!-- Link to JS -->
+        <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
