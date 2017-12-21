@@ -1,9 +1,18 @@
 .jumbotron{
-	background-color:#D2B48C;
+	background-image:url('https://www.mycafeteriaplan.com/wp-content/uploads/layerslider/LayerSlider-5-responsive-demo-slider/bg4.jpg');
 }
 body{
-	background-color: grey;
+	background-image: url('https://ordinaryfaith.net/wp-content/uploads/2016/03/Gray-plain-website-background.jpg')
 }
 .container{
 	background-color: #D8BFD8;
+}
+img{
+
+	height:20rem;
+	width:20rem;
+}
+h2{
+	font-family: 'Kanit', sans-serif;
+	color:black;
 }

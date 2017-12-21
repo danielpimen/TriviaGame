@@ -162,16 +162,16 @@ $(document).ready(function() {
     function displayImage() {
         if (count === 0) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/">');
+            $("#image-holder").html('<img src="assets/images/santiago.jpg">');
         } else if (count === 1) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/">');
+            $("#image-holder").html('<img src="assets/images/lima.jpg">');
         } else if (count === 2) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/">');
+            $("#image-holder").html('<img src="assets/images/croatia.png">');
         } else if (count === 3) {
             $("#image-holder").show();
-            $("#image-holder").html('<img src="assets/images/">');
+            $("#image-holder").html('<img src="assets/images/copenhagen.jpg">');
         } else if (count === 4) {
             $("#image-holder").show();
             $("#image-holder").html('<img src="assets/images/">');
